@@ -1,22 +1,13 @@
 import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
-import { GridColumn } from 'semantic-ui-react'
-import {
-    CardMeta,
-    CardHeader,
-    CardGroup,
-    CardDescription,
-    CardContent,
-    Button,
-    Card,
-    Image,
-} from 'semantic-ui-react'
 import TaskCard from './taskcard.component'
 
-const ColumnComponent = ({ id, taskList }) => {
+const ColumnComponent = ({column,tasksList}) => {
+    debugger
+    console.log(tasksList)
     return (
-        <GridColumn>
-            <Droppable droppableId={id}  type="" direction="horizontal">
+        // <GridColumn>
+            <Droppable droppableId={column.id}  type="column" direction="horizontal" isDropDisabled={false}>
                 {(provided, snapshot) => (
                     <div
                         ref={provided.innerRef}
@@ -25,7 +16,7 @@ const ColumnComponent = ({ id, taskList }) => {
                     >
                         <>
                             {
-                                taskList.map((task, index) => (
+                               tasksList&& tasksList?.map((task, index) => (
                                     <TaskCard task={task} key={task.id} index={index}/>
                                 ))
                             }
@@ -33,7 +24,7 @@ const ColumnComponent = ({ id, taskList }) => {
                     </div>
                 )}
             </Droppable>
-        </GridColumn>
+        // </GridColumn>
     )
 }
 
