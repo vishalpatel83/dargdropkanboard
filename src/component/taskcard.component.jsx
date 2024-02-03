@@ -14,9 +14,9 @@ const TaskCard = ({ task, index }) => {
                     isDragging={snapshot.isDragging}
                 >
                     <CardContent>
-                        {/* <CardHeader>{task.title}</CardHeader> */}
+                        <CardHeader>{task.title}</CardHeader>
                         <CardDescription>
-                            {task.content}
+                            {task.description}
                         </CardDescription>
                     </CardContent>
 
