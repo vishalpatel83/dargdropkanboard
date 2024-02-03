@@ -1,10 +1,13 @@
 // import logo from './logo.svg';
 // import './App.css';
 
+import KanbanBoard from "./component/kanbanboard.component";
+
 function App() {
   return (
     <div className="App">
-<h11>test</h11>
+
+      <KanbanBoard/>
     </div>
   );
 }
