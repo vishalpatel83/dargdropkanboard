@@ -1,15 +1,20 @@
 import React from 'react'
-import { GridRow, GridColumn, Grid, Image } from 'semantic-ui-react'
+import { GridRow, GridColumn, Grid, Image, Container } from 'semantic-ui-react'
 import ColumnComponent from './column.component';
 import useDragData from '../hook/useDragData.hook';
 import { DragDropContext } from 'react-beautiful-dnd';
+import AddTaskForm from './addtask.component';
 
 const KanbanBoard = () => {
-    const { handleDragEnd, taskData,onDragStart } = useDragData()
+    const { handleDragEnd, taskData, onDragStart, task, handleChange, handleSubmit } = useDragData()
+
 
 
     return (
         <>
+            <Container textAlign='center'>
+                <AddTaskForm task={task} handleChange={handleChange} handleSubmit={handleSubmit} />
+            </Container>
             <DragDropContext onDragEnd={handleDragEnd} onDragStart={onDragStart} >
                 <Grid columns={3} divided>
                     <GridRow>
@@ -25,13 +30,12 @@ const KanbanBoard = () => {
                     </GridRow>
                     <GridRow>
                         {taskData.columnOrder.map((columnId, i) => {
-                            debugger
                             const column = taskData.columns[columnId];
                             const tasksList = column.taskIds?.map((taskId) => taskData.tasks[taskId]);
 
                             return (
                                 <GridColumn>
-                                    <ColumnComponent key={column.id}  column={column} tasksList={tasksList} />
+                                    <ColumnComponent key={column.id} column={column} tasksList={tasksList} />
                                 </GridColumn>
                             );
                         })}

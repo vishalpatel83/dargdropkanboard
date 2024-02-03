@@ -1,10 +1,9 @@
 import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 import TaskCard from './taskcard.component'
+import { Segment } from 'semantic-ui-react'
 
 const ColumnComponent = ({column,tasksList}) => {
-    debugger
-    console.log(tasksList)
     return (
         // <GridColumn>
             <Droppable droppableId={column.id}  type="column" direction="horizontal" isDropDisabled={false}>
